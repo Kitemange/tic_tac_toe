@@ -1,7 +1,7 @@
 # tic_tac_toe
 ##4.7.2.1 PROJECT: Tic-Tac-Toe
 
-###Scenario
+**Scenario**
 Your task is to write a simple program which pretends to play tic-tac-toe with the user. To make it all easier for you, we've decided to simplify the game. Here are our assumptions:
 
 the computer (i.e., your program) should play the game using 'X's;
@@ -15,7 +15,7 @@ don't implement any form of artificial intelligence − a random field choice ma
 The example session with the program may look as follows:
 
 Enter your move: 8
-+-------+-------+-------+
+
 |       |       |       |
 |   O   |   X   |   3   |
 |       |       |       |
@@ -27,8 +27,7 @@ Enter your move: 8
 |       |       |       |
 |   7   |   O   |   9   |
 |       |       |       |
-+-------+-------+-------+
-+-------+-------+-------+
+
 |       |       |       |
 |   O   |   X   |   3   |
 |       |       |       |
@@ -40,9 +39,9 @@ Enter your move: 8
 |       |       |       |
 |   7   |   O   |   9   |
 |       |       |       |
-+-------+-------+-------+
+
 Enter your move: 4
-+-------+-------+-------+
+
 |       |       |       |
 |   O   |   X   |   3   |
 |       |       |       |
@@ -54,8 +53,8 @@ Enter your move: 4
 |       |       |       |
 |   7   |   O   |   9   |
 |       |       |       |
-+-------+-------+-------+
-+-------+-------+-------+
+
+
 |       |       |       |
 |   O   |   X   |   X   |
 |       |       |       |
@@ -67,9 +66,9 @@ Enter your move: 4
 |       |       |       |
 |   7   |   O   |   9   |
 |       |       |       |
-+-------+-------+-------+
+
 Enter your move: 7
-+-------+-------+-------+
+
 |       |       |       |
 |   O   |   X   |   X   |
 |       |       |       |
@@ -81,10 +80,10 @@ Enter your move: 7
 |       |       |       |
 |   O   |   O   |   9   |
 |       |       |       |
-+-------+-------+-------+
-*You won!*
 
-###Requirements
+_You won!_
+
+**Requirements**
 Implement the following features:
 
 the board should be stored as a three-element list, while each element is another three-element list (the inner lists represent rows) so that all of the squares may be accessed using the following syntax:
