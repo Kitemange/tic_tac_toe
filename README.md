@@ -16,15 +16,13 @@ The example session with the program may look as follows:
 
 Enter your move: 8
 
-|       |       |       |
+
 |   O   |   X   |   3   |
 |       |       |       |
 |-------|-------|-------|
-|       |       |       |
 |   4   |   X   |   6   |
 |       |       |       |
 |-------|-------|-------|
-|       |       |       |
 |   7   |   O   |   9   |
 |       |       |       |
 |-------|-------|-------|
