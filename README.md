@@ -17,6 +17,7 @@ The example session with the program may look as follows:
 Enter your move: 8
 
 |   O   |   X   |   3   |
+|-------|-------|-------|
 |   4   |   X   |   6   |
 |   7   |   O   |   9   |
 
@@ -37,21 +38,14 @@ Enter your move: 4
 |   O   |   X   |   X   |
 |-------|-------|-------|
 |   O   |   X   |   X   |
-|       |       |       |
 |   7   |   O   |   9   |
 
 Enter your move: 7
 
-|       |       |       |
 |   O   |   X   |   X   |
-|       |       |       |
 |-------|-------|-------|
 |   O   |   X   |   X   |
-|       |       |       |
-|-------|-------|-------|
-|       |       |       |
 |   O   |   O   |   9   |
-|       |       |       |
 
 _You won!_
 
