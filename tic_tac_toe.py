@@ -15,22 +15,21 @@ def DisplayBoard(board):
 def enter_move(board):
     # The function accepts the board's current status, asks the user about their turn,
     # checks the input, and updates the board according to the user's decision.
-	ok = False	# fake assumption - we need it to enter the loop
-	while not ok:
-		turn = int(input("Where do you wanna play: "))
-		ok = turn >= 1 and turn <= 9 # is user's input valid?
-		if not ok:
-			print("Out of range retry!") # no, it isn't - do the input again
-			continue
-		turn = turn - 1 	# cell's number from 0 to 8
-		row = turn // 3 	# cell's row
-		col = turn % 3		# cell's column
-		position = board[row][col]	# check the selected square
-		ok = position not in ['O','X']
-		if not ok:	# it's occupied - to the input again
-			print("Occupied!..Please retry your input!")
-			continue
-	board[row][col] = 'O' 	# set '0' at the selected square
+    ok = False
+    while not ok:
+        try:
+            turn = int(input("Where do you wanna play: "))
+            if turn < 1 or turn > 9:
+                raise ValueError("Out of range, please enter a number between 1 and 9.")
+            turn -= 1  # cell's number from 0 to 8
+            row = turn // 3  # cell's row
+            col = turn % 3  # cell's column
+            if board[row][col] in ['O', 'X']:
+                raise ValueError("That spot is already occupied, please select a different spot.")
+            ok = True
+        except ValueError as e:
+            print(e)#if not i is inputed
+    board[row][col] = 'O'  # set '0' at the selected square
 
 def make_list_of_free_fields(board):
     # The function browses the board and builds a list of all the free squares;
@@ -47,25 +46,28 @@ def make_list_of_free_fields(board):
 def VictoryFor(board,sign):
     # The function analyzes the board's status in order to check if 
     # the player using 'O's or 'X's has won the game
-	if sign == "X":
-		who = 'me'	# Computer's side
-	elif sign == "O":
-		who = 'you'	# Your side
-	else:
-		who = None
-	cross1 = cross2 = True
-	for rc in range(3):
-		if board[rc][0] == sign and board[rc][1] == sign and board[rc][2] == sign:
-			return who
-		if board[0][rc] == sign and board[1][rc] == sign and board[2][rc] == sign:
-			return who
-		if board[rc][rc] != sign:
-			cross1 = False
-		if board[2 - rc][2 - rc] != sign:
-			cross2 = False
-	if cross1 or cross2:
-		return who
-	return None
+    if sign not in ["X", "O"]:
+        return None
+    who = "me" if sign == "X" else "you"
+    #uses the all() function with a generator expression to check if all
+    # the elements in a row or column are equal to the given sign.
+
+    # check rows
+    for row in range(3):
+        if all(board[row][col] == sign for col in range(3)):
+            return who
+
+    # check columns
+    for col in range(3):
+        if all(board[row][col] == sign for row in range(3)):
+            return who
+
+    # check diagonals
+    if all(board[i][i] == sign for i in range(3)):
+        return who
+    if all(board[i][2-i] == sign for i in range(3)):
+        return who
+    return None
 
 def DrawMove(board):
     # The function draws the computer's move and updates the board.
@@ -79,10 +81,10 @@ def DrawMove(board):
 board = [ [3 * j + i + 1 for i in range(3)] for j in range(3) ] # make an empty board
 board[1][1] = 'X' # set first 'X' in the middle
 free = make_list_of_free_fields(board)
-humanturn = True # which turn is it now?
+human_turn = True # which turn is it now?
 while len(free):
 	DisplayBoard(board)
-	if humanturn:
+	if human_turn:
 		enter_move(board)
 		victor = VictoryFor(board,'O')
 	else:
@@ -90,7 +92,7 @@ while len(free):
 		victor = VictoryFor(board,'X')
 	if victor != None:
 		break
-	humanturn = not humanturn
+	human_turn = not human_turn
 	free = (board)
 
 DisplayBoard(board)
